@@ -4,8 +4,11 @@ from trip_tasks import TripTasks
 import streamlit as st
 import datetime
 
-st.set_page_config(page_icon="✈️", layout="wide")
 
+from dotenv import load_dotenv
+load_dotenv()
+
+st.set_page_config(page_icon="✈️", layout="wide")
 
 def icon(emoji: str):
     """Shows an emoji as a Notion-style page icon."""
@@ -100,11 +103,10 @@ if __name__ == "__main__":
 
         st.divider()
 
-        # Credits to joaomdmoura/CrewAI for the code: https://github.com/joaomdmoura/crewAI
+        
         st.sidebar.markdown(
             """
-        Credits to [**@joaomdmoura**](https://twitter.com/joaomdmoura) 
-        for creating **crewAI** 🚀
+        Credits to [**@abhishekchopde**]
         """,
             unsafe_allow_html=True
         )

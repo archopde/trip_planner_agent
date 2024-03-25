@@ -1,11 +1,11 @@
 from crewai import Agent
 import streamlit as st
-from langchain_community.llms import OpenAI
-
 from tools.browser_tools import BrowserTools
 from tools.calculator_tools import CalculatorTools
 from tools.search_tools import SearchTools
+from langchain_openai import ChatOpenAI
 
+llm = ChatOpenAI(model="gpt-4-turbo-preview")
 
 def streamlit_callback(step_output):
     # This function will be called after each step of the agent's execution
@@ -57,6 +57,7 @@ class TripAgents():
                 SearchTools.search_internet,
                 BrowserTools.scrape_and_summarize_website,
             ],
+            llm = llm,
             verbose=True,
             step_callback=streamlit_callback,
         )
@@ -71,6 +72,7 @@ class TripAgents():
                 SearchTools.search_internet,
                 BrowserTools.scrape_and_summarize_website,
             ],
+            llm = llm,
             verbose=True,
             step_callback=streamlit_callback,
         )
@@ -87,6 +89,7 @@ class TripAgents():
                 BrowserTools.scrape_and_summarize_website,
                 CalculatorTools.calculate,
             ],
+           llm = llm,
             verbose=True,
             step_callback=streamlit_callback,
         )
